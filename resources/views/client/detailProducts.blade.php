@@ -32,12 +32,12 @@
 
                         @if($products->promotion_price==0)
                             <h4 class="font-weight-bold blue-text">
-                                <strong>${{$products->price}}</strong>
+                                <strong>${{number_format($products->price)}}</strong>
                             </h4>
                         @else
                             <h4 class="font-weight-bold blue-text" >
-                                <del>${{$products->price}}</del>
-                                <strong>${{$products->promotion_price}}</strong>
+                                <del>${{number_format($products->price)}}</del>
+                                <strong>${{number_format($products->promotion_price)}}</strong>
                             </h4>
                         @endif
 
@@ -45,14 +45,13 @@
 
                         <p>{{$products->description}}.</p>
 
-                        <form class="d-flex justify-content-left">
+                        <form class="d-flex justify-content-left" action="{{route('addToCart', $products->id)}}"method="get">
                             <!-- Default input -->
-                            <input type="number" value="1" aria-label="Search" class="form-control"
+                            <input type="number" min="1" max="{{$products->quantity}}" name="qty"  value="1" aria-label="Search" class="form-control"
                                    style="width: 100px">
-                            <button class="btn btn-primary btn-md my-0 p" type="submit">Add to cart
+                            <button type="submit" class="btn btn-primary btn-md my-0 p" >Add to cart
                                 <i class="fas fa-shopping-cart ml-1"></i>
                             </button>
-
                         </form>
                     </div>
                     <!--Content-->

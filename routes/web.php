@@ -26,6 +26,24 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
     Route::get('detailProduct/{id}', 'WebController@detailProduct')->name('detailProduct');
 
+    Route::get('addToCart/{id}', 'CartController@addToCart')->name('addToCart');
+
+    Route::resource('bills','BillsController');
+
+//    Route::get('checkout','CartController@checkout');
+    Route::group(['middleware' => 'sessionCart'], function () {
+
+        Route::get('cart', 'CartController@index')->name('cart');
+
+    });
+
+    Route::post('checkout', 'CartController@checkout')->name('checkout');
+
+//    Route::get('updateItems/{id}', 'CartController@updateItems')->name('updateItems');
+
+    Route::get('deleteItems/{id}', 'CartController@deleteItems')->name('deleteItems');
+
+
     Route::group(['middleware' => ['auth', 'admin']], function () {
         Route::resource('/admin/categories', 'CategoriesController');
 

@@ -1,4 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.admin.app')
+@include('layouts.admin.headerDesktop')
+@include('layouts.admin.headerMobile')
+@include('layouts.admin.sidebar')
 @section('content')
     <div class="main-content">
         <div class="section__content section__content--p30">

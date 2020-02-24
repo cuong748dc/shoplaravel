@@ -51,13 +51,13 @@
 
 <body>
 
-@include('layouts.header')
+@include('layouts.client.header')
 <main>
     <div class="container">
         @yield('content')
     </div>
 </main>
-@include('layouts.footer')
+@include('layouts.client.footer')
 
 <!-- SCRIPTS -->
 <!-- Jquery JS-->

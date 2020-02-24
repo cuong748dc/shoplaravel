@@ -1,4 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.admin.app')
+@include('layouts.admin.headerDesktop')
+@include('layouts.admin.headerMobile')
+@include('layouts.admin.sidebar')
 @section('content')
     <div class="main-content">
         <div class="section__content section__content--p30">
@@ -28,9 +31,6 @@
                                     <th>price</th>
                                     <th>promotion price</th>
                                     <th>quantity</th>
-{{--                                    <th>description</th>--}}
-{{--                                    <th>status</th>--}}
-{{--                                    <th>bestseller</th>--}}
                                     <th>image</th>
                                     <th></th>
                                 </tr>
@@ -43,9 +43,6 @@
                                         <td class="desc">{{$product->price}}</td>
                                         <td class="desc">{{$product->promotion_price}}</td>
                                         <td class="desc">{{$product->quantity}}</td>
-{{--                                        <td class="desc">{{$product->description}}</td>--}}
-{{--                                        <td class="desc">{{$product->status}}</td>--}}
-{{--                                        <td class="desc">{{$product->bestseller}}</td>--}}
                                         <td style="padding: 0">
                                             <img width="100px" src="images/{{$product->image }}">
                                         </td>

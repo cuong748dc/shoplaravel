@@ -1,7 +1,7 @@
-@include('layouts.slide')
+@include('layouts.client.slide')
 @extends('welcome')
 @section('content')
-    @include('layouts.filter')
+    @include('layouts.client.filter')
     <!--Section: Products v.3-->
     <section class="text-center mb-4">
         <!--Grid row-->
@@ -43,12 +43,12 @@
                             </h5>
                             @if($product->promotion_price==0)
                                 <h4 class="font-weight-bold blue-text">
-                                    <strong>${{$product->price}}</strong>
+                                    <strong>${{number_format($product->price)}}</strong>
                                 </h4>
                             @else
                                 <h4 class="font-weight-bold blue-text" >
-                                    <del>${{$product->price}}</del>
-                                    <strong>${{$product->promotion_price}}</strong>
+                                    <del>${{number_format($product->price)}}</del>
+                                    <strong>${{number_format($product->promotion_price)}}</strong>
                                 </h4>
                             @endif
                         </div>

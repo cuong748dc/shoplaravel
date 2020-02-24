@@ -1,18 +1,18 @@
-@include('layouts.slide')
+@include('layouts.client.slide')
 @extends('welcome')
 @section('content')
-    @include('layouts.filter')
+    @include('layouts.client.filter')
 
     @if (count($products)==0)
-        <h3 class="font-weight-bold blue-text">
+        <h6>
             No results found with keyword: {{$search}}
             <br>
             Try again with another keyword!!!
-        </h3>
+        </h6>
     @else
-        <h3 class="font-weight-bold blue-text">
+        <h6>
             Found {{count($products)}} results with keyword: {{$search}}
-        </h3>
+        </h6>
     @endif
     <!--Section: Products v.3-->
     <section class="text-center mb-4">
@@ -49,20 +49,19 @@
                             </h5>
                             <h5>
                                 <strong>
-                                    <a href="{{route('detailProduct',$product->id)}}" class="dark-grey-text">{{$product->name}}
+                                    <a href="{{route('detailProduct',$product->id)}}"
+                                       class="dark-grey-text">{{$product->name}}
                                     </a>
                                 </strong>
                             </h5>
                             @if($product->promotion_price==0)
                                 <h4 class="font-weight-bold blue-text">
-                                    <strong>Price: ${{$product->price}}</strong>
+                                    <strong>${{number_format($product->price)}}</strong>
                                 </h4>
                             @else
-                                <h4 class="font-weight-bold blue-text" style="text-decoration: line-through">
-                                    <strong>Price: ${{$product->price}}</strong>
-                                </h4>
                                 <h4 class="font-weight-bold blue-text">
-                                    <strong>Promotion price: ${{$product->promotion_price}}</strong>
+                                    <del>${{number_format($product->price)}}</del>
+                                    <strong>${{number_format($product->promotion_price)}}</strong>
                                 </h4>
                             @endif
                         </div>

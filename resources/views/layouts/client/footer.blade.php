@@ -50,6 +50,10 @@
         <a href="#" target="_blank">
             <i class="fab fa-codepen mr-3"></i>
         </a>
+
+        <a href="#" target="_blank">
+            <i class="fab fa-instagram mr-3"></i>
+        </a>
     </div>
     <!-- Social icons -->
 

@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Categories;
+use App\Products;
+use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller

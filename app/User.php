@@ -38,4 +38,9 @@ class User extends Authenticatable
     ];
 
     public $timestamps = false;
+
+    public function bills()
+    {
+        return $this->hasMany('App\Bills','user_id','id');
+    }
 }
