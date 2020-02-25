@@ -30,7 +30,8 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
     Route::resource('bills','BillsController');
 
-//    Route::get('checkout','CartController@checkout');
+    Route::get('sendMail','MailController@email')->name('send');
+
     Route::group(['middleware' => 'sessionCart'], function () {
 
         Route::get('cart', 'CartController@index')->name('cart');

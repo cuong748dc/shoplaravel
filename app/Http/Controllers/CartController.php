@@ -7,7 +7,6 @@ use App\Bills;
 use App\Cart;
 use App\Products;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,6 +31,7 @@ class CartController extends Controller
         $oldCart = Session('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->addItems($products, $id, $request);
+        $products->quantity -= $request->qty;
         $request->session()->put('cart', $cart);
         return redirect()->back();
     }
@@ -58,7 +58,6 @@ class CartController extends Controller
         $bill->total = Session::get('cart')->totalPrice;
         $bill->save();
 
-
         if (count(Session::get('cart')->items) > 0) {
 
             foreach (Session::get('cart')->items as $item) {
@@ -69,10 +68,16 @@ class CartController extends Controller
                 $billDetail->quantity = $item['qty'];
                 $billDetail->price = ($item['items']['promotion_price'] > 0) ? $item['items']['promotion_price'] : $item['items']['price'];
                 $billDetail->save();
+
+                $products = Products::where('id', '=', $item['items']['id'])->get();
+                foreach ($products as $product) {
+                    $product->quantity -= $item['qty'];
+                    $product->save();
+                }
             }
         }
-        Session::forget('cart');
-        return redirect()->route('bills.index');
 
+        Session::forget('cart');
+        return redirect()->route('send');
     }
 }

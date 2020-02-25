@@ -21,23 +21,40 @@ class Cart
 
     public function addItems($items, $id, Request $request)
     {
+        $products = Products::find($id);
         $cart = ['qty' => $items->qty, 'price' => $items->price, 'items' => $items];
         if ($this->items) {
             if (array_key_exists($id, $this->items)) {
                 $cart = $this->items[$id];
             }
         }
-        $cart['qty'] += $request->qty;
-        if ($items->promotion_price == 0) {
-            $cart['price'] = $items->price * $cart['qty'];
-            $this->totalPrice += $items->price * $request->qty;
+        if (isset($this->items[$id]['qty'])) {
+            if ($this->items[$id]['qty'] > $products->quantity - $request->qty) {
+                return redirect()->route('detailProduct', $products->id)->with('success', 'Quantity of '.$products->name .' cant bigger than ' . $products->quantity);
+            } else {
+                $cart['qty'] += $request->qty;
+                if ($items->promotion_price == 0) {
+                    $cart['price'] = $items->price * $cart['qty'];
+                    $this->totalPrice += $items->price * $request->qty;
+                } else {
+                    $cart['price'] = $items->promotion_price * $cart['qty'];
+                    $this->totalPrice += $items->promotion_price * $request->qty;
+                }
+                $this->items[$id] = $cart;
+                $this->totalQty += $request->qty;
+            }
         } else {
-            $cart['price'] = $items->promotion_price * $cart['qty'];
-            $this->totalPrice += $items->promotion_price * $request->qty;
+            $cart['qty'] += $request->qty;
+            if ($items->promotion_price == 0) {
+                $cart['price'] = $items->price * $cart['qty'];
+                $this->totalPrice += $items->price * $request->qty;
+            } else {
+                $cart['price'] = $items->promotion_price * $cart['qty'];
+                $this->totalPrice += $items->promotion_price * $request->qty;
+            }
+            $this->items[$id] = $cart;
+            $this->totalQty += $request->qty;
         }
-        $this->items[$id] = $cart;
-        $this->totalQty += $request->qty;
-
     }
 
     public function updateItem($items, $id, Request $request)

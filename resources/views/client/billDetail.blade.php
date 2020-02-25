@@ -4,14 +4,13 @@
         <div class="container">
             <!-- Heading -->
             <h2 class="my-5 h2 text-center">Bill Detail</h2>
-
             <!--Grid row-->
             <div class="row">
                 <div class="col-md-12 mb-4" style="text-align: center">
                     <!-- Heading -->
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
                         <span class="text-muted">Bills:
-{{--                            {{$bills->id}}--}}
+
                         </span>
                     </h4>
                     <ul class="list-group mb-3 z-depth-1">

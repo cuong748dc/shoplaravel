@@ -7,7 +7,6 @@ use App\Bills;
 use App\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 
 class BillsController extends Controller
 {
@@ -37,7 +36,7 @@ class BillsController extends Controller
     {
         $bills = Bills::all();
         $products = Products::all();
-        $billDetails = BillDetails::where('bills_id', '=', $id)->paginate(8);
+        $billDetails = BillDetails::where('bills_id', $id)->orderBy('id','desc')->paginate(8);
         return view('client.billDetail', compact('billDetails', 'products', 'bills'));
     }
 

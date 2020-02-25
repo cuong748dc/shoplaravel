@@ -2,13 +2,19 @@
 @section('content')
     <!--Main layout-->
     <main class="mt-5 pt-4">
+
         <div class="container dark-grey-text mt-5">
-            <!--Grid row-->
+            @if(session()->has('success'))
+                <div class="alert alert-danger">
+                    {{ session()->get('success') }}
+                </div>
+        @endif
+        <!--Grid row-->
             <div class="row wow fadeIn">
                 <!--Grid column-->
                 <div class="col-md-6 mb-4">
                     <img src="/images/{{$products->image}}"
-                         class="img-fluid" alt="" >
+                         class="img-fluid" alt="">
                 </div>
                 <!--Grid column-->
                 <!--Grid column-->
@@ -35,7 +41,7 @@
                                 <strong>${{number_format($products->price)}}</strong>
                             </h4>
                         @else
-                            <h4 class="font-weight-bold blue-text" >
+                            <h4 class="font-weight-bold blue-text">
                                 <del>${{number_format($products->price)}}</del>
                                 <strong>${{number_format($products->promotion_price)}}</strong>
                             </h4>
@@ -45,11 +51,13 @@
 
                         <p>{{$products->description}}.</p>
 
-                        <form class="d-flex justify-content-left" action="{{route('addToCart', $products->id)}}"method="get">
+                        <form class="d-flex justify-content-left" action="{{route('addToCart', $products->id)}}"
+                              method="get">
                             <!-- Default input -->
-                            <input type="number" min="1" max="{{$products->quantity}}" name="qty"  value="1" aria-label="Search" class="form-control"
+                            <input type="number" min="1" max="{{$products->quantity}}" name="qty" value="1"
+                                   aria-label="Search" class="form-control"
                                    style="width: 100px">
-                            <button type="submit" class="btn btn-primary btn-md my-0 p" >Add to cart
+                            <button type="submit" class="btn btn-primary btn-md my-0 p">Add to cart
                                 <i class="fas fa-shopping-cart ml-1"></i>
                             </button>
                         </form>
