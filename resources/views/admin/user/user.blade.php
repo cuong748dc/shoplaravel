@@ -22,6 +22,7 @@
                                     <th>email</th>
                                     <th>admin</th>
                                     <th>address</th>
+                                    <th>phone</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -38,6 +39,7 @@
                                                 Customer
                                             @endif</td>
                                         <td>{{$user->address}}</td>
+                                        <td>{{$user->phone}}</td>
                                         <td>
                                             <div class="table-data-feature">
                                                 <a class="item" href="{{ route('users.edit',$user->id) }}"
@@ -59,10 +61,10 @@
                                     <tr class="spacer"></tr>
                                     </tbody>
                                 @endforeach
-                                {!! $users->links() !!}
                             </table>
                         </div>
-                        <!-- END DATA TABLE -->
+                    {!! $users->links() !!}
+                    <!-- END DATA TABLE -->
                     </div>
                 </div>
             </div>

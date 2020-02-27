@@ -17,7 +17,7 @@
                         <div class="table-data__tool">
                             <div class="table-data__tool-right">
                                 <a class="au-btn au-btn-icon au-btn--green au-btn--small"
-                                        href="{{route('products.create')}}">
+                                   href="{{route('products.create')}}">
                                     <i class="zmdi zmdi-plus"></i>ADD product
                                 </a>
                             </div>
@@ -40,8 +40,8 @@
                                     <tr class="tr-shadow">
                                         <td class="desc">{{$product->name}}</td>
                                         <td class="desc">{{$product->categories['name']}}</td>
-                                        <td class="desc">{{$product->price}}</td>
-                                        <td class="desc">{{$product->promotion_price}}</td>
+                                        <td class="desc">${{number_format($product->price)}}</td>
+                                        <td class="desc">${{number_format($product->promotion_price)}}</td>
                                         <td class="desc">{{$product->quantity}}</td>
                                         <td style="padding: 0">
                                             <img width="100px" src="images/{{$product->image }}">
@@ -67,10 +67,10 @@
                                     <tr class="spacer"></tr>
                                     </tbody>
                                 @endforeach
-                                {!! $products->links() !!}
                             </table>
                         </div>
-                        <!-- END DATA TABLE -->
+                    {!! $products->links() !!}
+                    <!-- END DATA TABLE -->
                     </div>
                 </div>
             </div>

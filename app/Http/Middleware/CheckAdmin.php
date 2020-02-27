@@ -18,7 +18,7 @@ class CheckAdmin
     {
         if (Auth::user()->admin == 1) {
             return $next($request);
-        }else{
+        } else {
             return redirect()->route('shop');
         }
 

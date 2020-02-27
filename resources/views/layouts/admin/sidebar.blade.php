@@ -15,7 +15,7 @@
                     <a href="{{route('products.index')}}">Products</a>
                 </li>
                 <li class="active has-sub">
-                    {{--                        <a href="{{route('allOrder.index')}}">All Order</a>--}}
+                    <a href="{{route('order.index')}}">Order</a>
                 </li>
                 <li class="active has-sub">
                     <a href={{route('users.index')}}>Users</a>

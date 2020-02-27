@@ -18,7 +18,8 @@ class CreateBillsTable extends Migration
             $table->integer('users_id');
             $table->dateTime('date_order');
             $table->double('total');
-            $table->string('note')->nullable();
+            $table->boolean('status')->default(0);
+            $table->text('user_address');
         });
     }
 

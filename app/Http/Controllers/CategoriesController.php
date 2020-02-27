@@ -37,7 +37,8 @@ class CategoriesController extends Controller
 
     public function show($id)
     {
-        //
+        $products = Products::where('categories_id', '=', $id)->paginate(5);
+        return view('admin.products.products', compact('products'));
     }
 
     public function edit($id)
@@ -60,7 +61,6 @@ class CategoriesController extends Controller
         $categories->delete();
         $products = Products::where('categories_id', '=', $id);
         $products->delete();
-        return redirect()->route('categories.index')->with('success', 'Category deleted successfully')
-            ;
+        return redirect()->route('categories.index')->with('success', 'Category deleted successfully');
     }
 }

@@ -27,6 +27,7 @@ class UsersRequest extends FormRequest
         return [
             'name' => 'User name',
             'address' => 'Address',
+            'phone' => 'Phone'
         ];
     }
 
@@ -35,6 +36,7 @@ class UsersRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'address' => 'required|max:255',
+            'phone' => ['regex:/(03|07|08|09)+[0-9]{8}/'],
         ];
     }
 
@@ -43,6 +45,7 @@ class UsersRequest extends FormRequest
         return [
             'required' => ':attribute is required!',
             'max' => ':attribute too long!',
+            'regex' => ':attribute not a phone number'
         ];
     }
 }

@@ -61,7 +61,8 @@
                                         <label class=" form-control-label">Promotion Price</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input id="promotion_price" type="text" class="form-control" name="promotion_price"
+                                        <input id="promotion_price" type="text" class="form-control"
+                                               name="promotion_price"
                                                placeholder="Promotion Price">
                                     </div>
                                 </div>

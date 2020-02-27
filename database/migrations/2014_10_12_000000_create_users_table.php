@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->boolean('admin')->default(0);
             $table->string('address');
             $table->string('password');
+            $table->text('phone');
         });
     }
 

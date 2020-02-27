@@ -52,7 +52,7 @@
                                         <i class="zmdi zmdi-check"></i>
                                     </div>
                                     <div class="text">
-                                        <h2>count order</h2>
+                                        <h2>{{count($unfinished)}}</h2>
                                         <span>Order</span>
                                     </div>
                                 </div>
@@ -67,8 +67,8 @@
                                         <i class="zmdi zmdi-check-all"></i>
                                     </div>
                                     <div class="text">
-                                        <h2>count finish</h2>
-                                        <span>order</span>
+                                        <h2>{{count($finished)}}</h2>
+                                        <span>Order</span>
                                     </div>
                                 </div>
                             </div>

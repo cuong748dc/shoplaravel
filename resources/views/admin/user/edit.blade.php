@@ -63,6 +63,16 @@
                                                class="form-control" value="{{$users->address}}">
                                     </div>
                                 </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label class=" form-control-label">Phone</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" name="phone"
+                                               placeholder="Phone"
+                                               class="form-control" value="{{$users->phone}}">
+                                    </div>
+                                </div>
                             </form>
                         </div>
                         <div class="card-footer">

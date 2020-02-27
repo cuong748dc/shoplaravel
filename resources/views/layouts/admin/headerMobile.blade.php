@@ -24,7 +24,7 @@
                     <a class="js-arrow" href="{{route('products.index')}}">Products</a>
                 </li>
                 <li class="has-sub">
-                    {{--                        <a class="js-arrow" href="{{route('allOrder.index')}}">All Order</a>--}}
+                    <a class="js-arrow" href="{{route('order.index')}}">Order</a>
                 </li>
                 <li class="has-sub">
                     <a class="js-arrow" href="{{route('users.index')}}">Users</a>

@@ -27,6 +27,7 @@ class CategoriesRequest extends FormRequest
             'name' => 'Category name',
         ];
     }
+
     public function rules()
     {
         return [

@@ -27,6 +27,7 @@ class ProductsRequest extends FormRequest
             'name' => 'Product name',
             'price' => 'Price',
             'quantity' => 'Quantity',
+            'promotion_price' => 'Promotion Price',
             'description' => 'Description',
             'image' => 'Product Image'
         ];
@@ -39,7 +40,8 @@ class ProductsRequest extends FormRequest
             'price' => 'required|numeric|gt:0',
             'quantity' => 'required|numeric|gt:0',
             'description' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'promotion_price' => 'required|numeric|lte:price',
         ];
     }
 
@@ -52,7 +54,8 @@ class ProductsRequest extends FormRequest
             'numeric' => ':attribute must be a number!',
             'image' => ':attribute must be a image!',
             'mimes' => ':attribute must be in jpeg,png,jpg,gif,svg format!',
-            'gt' => ':attribute must be greater than :gt'
+            'gt' => ':attribute must be greater than :gt',
+            'lte' => ':attribute must be less than :value',
         ];
     }
 }

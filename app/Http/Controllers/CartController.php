@@ -33,7 +33,7 @@ class CartController extends Controller
         $cart->addItems($products, $id, $request);
         $products->quantity -= $request->qty;
         $request->session()->put('cart', $cart);
-        return redirect()->back();
+        return redirect()->route('cart');
     }
 
     public function updateItems(Request $request, $id)
@@ -54,6 +54,7 @@ class CartController extends Controller
     {
         $bill = new Bills();
         $bill->users_id = $request->user_id;
+        $bill->user_address = $request->address;
         $bill->date_order = date('Y-m-d H:i:s');
         $bill->total = Session::get('cart')->totalPrice;
         $bill->save();
@@ -72,12 +73,11 @@ class CartController extends Controller
                 $products = Products::where('id', '=', $item['items']['id'])->get();
                 foreach ($products as $product) {
                     $product->quantity -= $item['qty'];
+                    $product->sold += $item['qty'];
                     $product->save();
                 }
             }
         }
-
-        Session::forget('cart');
         return redirect()->route('send');
     }
 }

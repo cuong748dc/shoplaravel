@@ -108,23 +108,6 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label class=" form-control-label">Bestseller</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <select name="bestseller" class="form-control">
-                                            <option @if($products->bestseller == 1)
-                                                    {{'selected'}}
-                                                    @endif value='1'> Bestseller
-                                            </option>
-                                            <option @if($products->bestseller == 0)
-                                                    {{'selected'}}
-                                                    @endif value='0'>Normal
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
                                 <div class="form-group row">
                                     <div class="col col-md-3">
                                         <label class=" form-control-label">Product Image</label>

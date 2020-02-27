@@ -30,7 +30,7 @@ class Cart
         }
         if (isset($this->items[$id]['qty'])) {
             if ($this->items[$id]['qty'] > $products->quantity - $request->qty) {
-                return redirect()->route('detailProduct', $products->id)->with('success', 'Quantity of '.$products->name .' cant bigger than ' . $products->quantity);
+                return redirect()->route('detailProduct', $products->id)->with('success', 'Quantity of ' . $products->name . ' cant bigger than ' . $products->quantity);
             } else {
                 $cart['qty'] += $request->qty;
                 if ($items->promotion_price == 0) {

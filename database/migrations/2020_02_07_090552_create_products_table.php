@@ -21,8 +21,10 @@ class CreateProductsTable extends Migration
             $table->integer('quantity');
             $table->text('description');
             $table->integer('promotion_price');
+            $table->text('image');
             $table->boolean('status')->default(1);
-            $table->boolean('bestseller')->default(0);
+//            $table->boolean('bestseller')->default(0);
+//            $table->integer('sold')->default(0);
         });
     }
 

@@ -77,7 +77,6 @@ class ProductsController extends Controller
         $products->quantity = $request->quantity;
         $products->promotion_price = $request->promotion_price;
         $products->status = $request->status;
-        $products->bestseller = $request->bestseller;
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');

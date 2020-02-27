@@ -1,7 +1,6 @@
 <!--Carousel Wrapper-->
 <base href="{{asset('')}}">
 <div id="carousel-example-1z" class="carousel slide carousel-fade pt-4" data-ride="carousel">
-
     <!--Indicators-->
     <ol class="carousel-indicators">
         <?php
@@ -18,10 +17,8 @@
         @endforeach
     </ol>
     <!--/.Indicators-->
-
     <!--Slides-->
     <div class="carousel-inner" role="listbox">
-
         <!--First slide-->
         <?php
         $i = 0;
@@ -36,14 +33,12 @@
                 $i++;
                 ?>
                 <img class="img-thumbnail" src="slide/{{ $slide->image }}">
-                </div>
-                @endforeach
             </div>
-            <!--/First slide-->
-
+        @endforeach
     </div>
-
-    <!--/.Slides-->
+    <!--/First slide-->
+</div>
+<!--/.Slides-->
 <div>
     <!--Controls-->
     <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
@@ -55,6 +50,5 @@
         <span class="sr-only">Next</span>
     </a>
     <!--/.Controls-->
-
 </div>
 <!--/.Carousel Wrapper-->

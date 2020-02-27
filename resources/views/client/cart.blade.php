@@ -2,7 +2,12 @@
 @section('content')
     <main class="mt-5 pt-4">
         <div class="container">
-            <!-- Heading -->
+            @if(session()->has('success'))
+                <div class="alert alert-danger">
+                    {{ session()->get('success') }}
+                </div>
+        @endif
+        <!-- Heading -->
             <h2 class="my-5 h2 text-center">Checkout</h2>
             <!--Grid row-->
             <div class="row">
@@ -13,7 +18,7 @@
                         <!--Card content-->
                         <form class="card-body" action="{{route('checkout')}}" method="POST">
                             <!--Username-->
-                            <div  hidden class="md-form input-group pl-0 mb-5">
+                            <div hidden class="md-form input-group pl-0 mb-5">
                                 <input type="text" class="form-control py-0"
                                        aria-describedby="basic-addon1" name="user_id" value="{{Auth::user()->id}}">
                             </div>
@@ -21,12 +26,12 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">@</span>
                                 </div>
-                                <input type="text" class="form-control py-0" placeholder="Name"
+                                <input disabled type="text" class="form-control py-0" placeholder="Name"
                                        aria-describedby="basic-addon1" value="{{Auth::user()->name}}">
                             </div>
                             <!--email-->
                             <div class="md-form mb-5">
-                                <input type="text" id="email" class="form-control"
+                                <input disabled type="text" id="email" class="form-control"
                                        value="{{Auth::user()->email}}"
                                        placeholder="youremail@example.com">
                                 <label for="email" class="">Email</label>
@@ -34,8 +39,8 @@
                             <!--address-->
                             <div class="md-form mb-5">
                                 <input type="text" id="address" class="form-control"
-                                       value="{{Auth::user()->address}}"
-                                       placeholder="Address">
+                                       value="{{Auth::user()->address}}" name="address"
+                                       placeholder="Address" required>
                                 <label for="address" class="">Address</label>
                             </div>
                             @csrf
@@ -73,11 +78,12 @@
                                                 ${{number_format($product['items']['promotion_price'])}}
                                             @endif</small>
                                     </div>
-                                    <input disabled type="number" value="{{ $product['qty'] }}" aria-label="Search"
-                                           class="form-control" min="1" max="1000"
-                                           style="width: 80px">
+                                    {{--                                    <input disabled type="number" value="{{ $product['qty'] }}" aria-label="Search"--}}
+                                    {{--                                           class="form-control" min="1" max="1000"--}}
+                                    {{--                                           style="width: 80px">--}}
                                     {{--                                        <a href="{{route('updateItems',$product['items']['id'])}}"><i--}}
                                     {{--                                                class="fa fa-refresh"></i> </a>--}}
+                                    <h6 class="my-0">{{ $product['qty'] }}</h6>
                                     <a href="{{route('deleteItems',$product['items']['id'])}}"><i
                                             class="fa fa-trash"></i> </a>
 

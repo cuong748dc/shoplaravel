@@ -4,12 +4,7 @@
     <main class="mt-5 pt-4">
 
         <div class="container dark-grey-text mt-5">
-            @if(session()->has('success'))
-                <div class="alert alert-danger">
-                    {{ session()->get('success') }}
-                </div>
-        @endif
-        <!--Grid row-->
+            <!--Grid row-->
             <div class="row wow fadeIn">
                 <!--Grid column-->
                 <div class="col-md-6 mb-4">
@@ -30,7 +25,7 @@
                             @if($products->status ==1)
                                 <a class="badge badge-pill danger-color" href="{{route('newProducts')}}">NEW</a>
                             @endif
-                            @if($products->bestseller==1)
+                            @if($products->sold > 3)
                                 <a class="badge badge-pill warning-color"
                                    href="{{route('bestseller')}}">BESTSELLER</a>
                             @endif
@@ -51,15 +46,25 @@
 
                         <p>{{$products->description}}.</p>
 
+                        <p>In stock, there are {{$products->quantity}} products left</p>
+
                         <form class="d-flex justify-content-left" action="{{route('addToCart', $products->id)}}"
                               method="get">
                             <!-- Default input -->
                             <input type="number" min="1" max="{{$products->quantity}}" name="qty" value="1"
                                    aria-label="Search" class="form-control"
                                    style="width: 100px">
-                            <button type="submit" class="btn btn-primary btn-md my-0 p">Add to cart
-                                <i class="fas fa-shopping-cart ml-1"></i>
-                            </button>
+                            @if($products->quantity > 0)
+                                <button type="submit" class="btn btn-primary btn-md my-0 p">
+                                    Add to cart
+                                    <i class="fas fa-shopping-cart ml-1"></i>
+                                </button>
+                            @else
+                                <button disabled type="submit" class="btn btn-danger btn-md my-0 p">
+                                    Out of stock
+                                    <i class="fas fa-ban ml-1"></i>
+                                </button>
+                            @endif
                         </form>
                     </div>
                     <!--Content-->

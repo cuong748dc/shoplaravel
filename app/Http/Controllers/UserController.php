@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UsersRequest;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -39,16 +40,16 @@ class UserController extends Controller
         return view('admin.user.edit', compact('users'));
     }
 
-    public function update(Request $request, $id)
+    public function update(UsersRequest $request, $id)
     {
         $users = User::findOrFail($id);
         $users->name = $request->name;
         $users->admin = $request->admin;
         $users->address = $request->address;
+        $users->phone = $request->phone;
         $users->save();
 
-        return redirect()->route('users.index')->with('success', 'User updated successfully')
-            ;
+        return redirect()->route('users.index')->with('success', 'User updated successfully');
     }
 
     public function destroy($id)
@@ -56,7 +57,6 @@ class UserController extends Controller
         $users = User::findOrFail($id);
         $users->delete();
 
-        return redirect()->route('users.index')->with('success', 'User deleted successfully')
-            ;
+        return redirect()->route('users.index')->with('success', 'User deleted successfully');
     }
 }

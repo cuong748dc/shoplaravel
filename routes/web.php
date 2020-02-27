@@ -28,9 +28,13 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
     Route::get('addToCart/{id}', 'CartController@addToCart')->name('addToCart');
 
-    Route::resource('bills','BillsController');
+    Route::resource('bills', 'BillsController');
 
-    Route::get('sendMail','MailController@email')->name('send');
+    Route::get('sendMail', 'MailController@email')->name('send');
+
+    Route::get('users/{id}/edit', 'WebController@editUsers')->name('account');
+
+    Route::post('users/{id}', 'WebController@updateUsers')->name('change');
 
     Route::group(['middleware' => 'sessionCart'], function () {
 
@@ -50,7 +54,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
         Route::resource('/admin/products', 'ProductsController');
 
-//Route::resource('/admin/allOrder', 'AllOrderController');
+        Route::resource('/admin/order', 'OrderController');
 
         Route::resource('/admin/users', 'UserController');
 

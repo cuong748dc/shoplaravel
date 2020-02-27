@@ -17,7 +17,7 @@ class BillsController extends Controller
 
     public function index()
     {
-        $bills = Bills::where('users_id', '=', Auth::user()->id)->orderBy('id','desc')->paginate(8);
+        $bills = Bills::where('users_id', '=', Auth::user()->id)->orderBy('id', 'desc')->paginate(8);
 
         return view('client.bill', compact('bills'));
     }
@@ -36,7 +36,7 @@ class BillsController extends Controller
     {
         $bills = Bills::all();
         $products = Products::all();
-        $billDetails = BillDetails::where('bills_id', $id)->orderBy('id','desc')->paginate(8);
+        $billDetails = BillDetails::where('bills_id', $id)->orderBy('id', 'desc')->paginate(8);
         return view('client.billDetail', compact('billDetails', 'products', 'bills'));
     }
 

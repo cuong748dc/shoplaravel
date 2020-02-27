@@ -33,7 +33,9 @@
                                 @foreach($categories as $category)
                                     <tbody>
                                     <tr class="tr-shadow">
-                                        <td class="desc">{{$category->name}}</td>
+                                        <td class="desc"><a
+                                                href="{{route('categories.show',$category->id)}}">{{$category->name}}</a>
+                                        </td>
                                         <td>
                                             <div class="table-data-feature">
                                                 <a class="item" href="{{ route('categories.edit',$category->id) }}"
@@ -55,10 +57,10 @@
                                     <tr class="spacer"></tr>
                                     </tbody>
                                 @endforeach
-                                {!! $categories->links() !!}
                             </table>
                         </div>
-                        <!-- END DATA TABLE -->
+                    {!! $categories->links() !!}
+                    <!-- END DATA TABLE -->
                     </div>
                 </div>
             </div>
