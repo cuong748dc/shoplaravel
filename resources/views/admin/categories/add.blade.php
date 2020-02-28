@@ -29,7 +29,7 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <input type="text" name="name" placeholder="New Category Name"
-                                               class="form-control">
+                                               value="{{ old('name') }}"class="form-control">
                                     </div>
                                 </div>
 

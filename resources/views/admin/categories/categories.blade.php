@@ -44,10 +44,10 @@
                                                     <i class="zmdi zmdi-edit"></i>
                                                 </a>
                                                 <form action="{{ route('categories.destroy', $category->id)}}"
-                                                      method="post">
+                                                      method="post" onclick="return window.confirm('Are you sure?');">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="item" data-placement="top"
+                                                    <button type="submit"  class="item" data-placement="top"
                                                             title="Delete"><i class="zmdi zmdi-delete"></i>
                                                     </button>
                                                 </form>

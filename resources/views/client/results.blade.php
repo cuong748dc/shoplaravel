@@ -11,7 +11,7 @@
         </h6>
     @else
         <h6>
-            Found {{count($products)}} results with keyword: {{$search}}
+            Found {{$products->total()}} results with keyword: {{$search}}
         </h6>
     @endif
     <!--Section: Products v.3-->

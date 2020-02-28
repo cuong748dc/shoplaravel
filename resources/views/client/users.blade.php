@@ -2,11 +2,17 @@
 @section('content')
     <main class="mt-5 pt-4">
         <div class="container">
+            @if(session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session()->get('success') }}
+                </div>
+            @endif
             @if ($errors->any())
+
                 <div class="alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
+                            {{ $error }}<br>
                         @endforeach
                     </ul>
                 </div>

@@ -26,7 +26,6 @@
                                 </tr>
                                 </thead>
                                 @foreach($billDetail as $bill)
-
                                     <tbody>
                                     <tr class="tr-shadow">
                                         <td class="desc">{{$bill->bills_id}}</td>

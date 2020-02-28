@@ -14,7 +14,7 @@ class WebController extends Controller
     public function index()
     {
         $categories = Categories::all();
-        $products = Products::paginate(8);
+        $products = Products::orderBy('id','desc')->paginate(8);
         return view('client.products', compact('categories', 'products'));
     }
 
@@ -48,6 +48,7 @@ class WebController extends Controller
             ->orWhere('price', 'like', '%' . $search . '%')
             ->orWhere('promotion_price', 'like', '%' . $search . '%')
             ->paginate(8);
+        $products->appends(['search' => $search]);
         return view('client.results', compact('categories', 'products', 'search'));
     }
 

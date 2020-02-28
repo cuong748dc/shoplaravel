@@ -3,8 +3,17 @@
     <main class="mt-5 pt-4">
         <div class="container">
             @if(session()->has('success'))
-                <div class="alert alert-danger">
+                <div class="alert alert-success">
                     {{ session()->get('success') }}
+                </div>
+            @endif
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            {{ $error }}<br>
+                        @endforeach
+                    </ul>
                 </div>
         @endif
         <!-- Heading -->
@@ -40,8 +49,15 @@
                             <div class="md-form mb-5">
                                 <input type="text" id="address" class="form-control"
                                        value="{{Auth::user()->address}}" name="address"
-                                       placeholder="Address" required>
+                                       placeholder="Address">
                                 <label for="address" class="">Address</label>
+                            </div>
+
+                            <div class="md-form mb-5">
+                                <input type="text" id="phone" class="form-control"
+                                       value="{{Auth::user()->phone}}" name="phone"
+                                       placeholder="Phone">
+                                <label for="phone" class="">Phone</label>
                             </div>
                             @csrf
                             <button @if(Session('cart')->totalPrice==0)

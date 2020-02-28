@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\BillDetails;
 use App\Bills;
 use App\Cart;
+use App\Http\Requests\CheckoutRequest;
 use App\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -33,7 +34,7 @@ class CartController extends Controller
         $cart->addItems($products, $id, $request);
         $products->quantity -= $request->qty;
         $request->session()->put('cart', $cart);
-        return redirect()->route('cart');
+        return redirect()->route('cart')->with('success', 'Add product to cart successfully.');;
     }
 
     public function updateItems(Request $request, $id)
@@ -47,14 +48,15 @@ class CartController extends Controller
         $cart = new Cart($oldCart);
         $cart->removeAll($id);
         $request->session()->put('cart', $cart);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Delete product in cart successfully.');;;
     }
 
-    public function checkout(Request $request)
+    public function checkout(CheckoutRequest $request)
     {
         $bill = new Bills();
         $bill->users_id = $request->user_id;
         $bill->user_address = $request->address;
+        $bill->user_phone = $request->phone;
         $bill->date_order = date('Y-m-d H:i:s');
         $bill->total = Session::get('cart')->totalPrice;
         $bill->save();

@@ -22,7 +22,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
     Route::get('bestseller', 'WebController@bestseller')->name('bestseller');
 
-    Route::get('search', 'WebController@search');
+    Route::get('search', 'WebController@search')->name('search');
 
     Route::get('detailProduct/{id}', 'WebController@detailProduct')->name('detailProduct');
 

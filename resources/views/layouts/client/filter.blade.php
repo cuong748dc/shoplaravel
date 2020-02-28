@@ -19,7 +19,7 @@
         </ul>
         <!-- Links -->
 
-        <form class="form-inline" action="/search" method="GET">
+        <form class="form-inline" action="{{route('search')}}" method="GET">
             <div class="md-form my-0">
                 <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search"
                        aria-label="Search">

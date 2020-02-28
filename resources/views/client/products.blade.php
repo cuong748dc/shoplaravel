@@ -12,9 +12,13 @@
                     <div class="card">
                         <!--Card image-->
                         <div class="view overlay">
-                            <img src="images/{{$product->image}}" class="card-img-top"
-                                 alt="">
                             <a href="{{route('detailProduct',$product->id)}}">
+                                @if($product->status ==1)
+                                    <span class="badge badge-pill badge-danger"
+                                          style="position: absolute;z-index: 1000;right: 0;">NEW</span>
+                                @endif
+                                <img src="images/{{$product->image}}" class="card-img-top"
+                                     alt="">
                                 <div class="mask rgba-white-slight"></div>
                             </a>
                         </div>
@@ -26,21 +30,11 @@
                                 <h5>{{$product->categories['name']}}</h5>
                             </a>
                             <h5>
-                                <strong>
-                                    @if($product->status ==1)
-                                        <a class="badge badge-pill danger-color" href="{{route('newProducts')}}">NEW</a>
-                                    @endif
-                                    @if($product->sold > 3)
-                                        <a class="badge badge-pill warning-color" href="{{route('bestseller')}}">BESTSELLER</a>
-                                    @endif
-                                </strong>
-                            </h5>
-                            <h5>
-                                <strong>
+                                <div class="name-products">
                                     <a href="{{route('detailProduct',$product->id)}}"
                                        class="dark-grey-text">{{$product->name}}
                                     </a>
-                                </strong>
+                                </div>
                             </h5>
                             @if($product->promotion_price==0)
                                 <h4 class="font-weight-bold blue-text">
@@ -70,9 +64,13 @@
                     <div class="card">
                         <!--Card image-->
                         <div class="view overlay">
-                            <img src="images/{{$product->image}}" class="card-img-top"
-                                 alt="">
                             <a href="{{route('detailProduct',$product->id)}}">
+                                @if($product->status ==1)
+                                    <span class="badge badge-pill badge-danger"
+                                          style="position: absolute;z-index: 1000;right: 0;">NEW</span>
+                                @endif
+                                <img src="images/{{$product->image}}" class="card-img-top"
+                                     alt="">
                                 <div class="mask rgba-white-slight"></div>
                             </a>
                         </div>
@@ -84,21 +82,11 @@
                                 <h5>{{$product->categories['name']}}</h5>
                             </a>
                             <h5>
-                                <strong>
-                                    @if($product->status ==1)
-                                        <a class="badge badge-pill danger-color" href="{{route('newProducts')}}">NEW</a>
-                                    @endif
-                                    @if($product->sold > 3)
-                                        <a class="badge badge-pill warning-color" href="{{route('bestseller')}}">BESTSELLER</a>
-                                    @endif
-                                </strong>
-                            </h5>
-                            <h5>
-                                <strong>
+                                <div class="name-products">
                                     <a href="{{route('detailProduct',$product->id)}}"
                                        class="dark-grey-text">{{$product->name}}
                                     </a>
-                                </strong>
+                                </div>
                             </h5>
                             @if($product->promotion_price==0)
                                 <h4 class="font-weight-bold blue-text">
@@ -128,9 +116,13 @@
                     <div class="card">
                         <!--Card image-->
                         <div class="view overlay">
-                            <img src="images/{{$product->image}}" class="card-img-top"
-                                 alt="">
                             <a href="{{route('detailProduct',$product->id)}}">
+                                @if($product->status ==1)
+                                    <span class="badge badge-pill badge-danger"
+                                          style="position: absolute;z-index: 1000;right: 0;">NEW</span>
+                                @endif
+                                <img src="images/{{$product->image}}" class="card-img-top"
+                                     alt="">
                                 <div class="mask rgba-white-slight"></div>
                             </a>
                         </div>
@@ -142,21 +134,11 @@
                                 <h5>{{$product->categories['name']}}</h5>
                             </a>
                             <h5>
-                                <strong>
-                                    @if($product->status ==1)
-                                        <a class="badge badge-pill danger-color" href="{{route('newProducts')}}">NEW</a>
-                                    @endif
-                                    @if($product->sold > 3)
-                                        <a class="badge badge-pill warning-color" href="{{route('bestseller')}}">BESTSELLER</a>
-                                    @endif
-                                </strong>
-                            </h5>
-                            <h5>
-                                <strong>
+                                <div class="name-products">
                                     <a href="{{route('detailProduct',$product->id)}}"
                                        class="dark-grey-text">{{$product->name}}
                                     </a>
-                                </strong>
+                                </div>
                             </h5>
                             @if($product->promotion_price==0)
                                 <h4 class="font-weight-bold blue-text">

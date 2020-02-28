@@ -6,7 +6,13 @@
     <div class="main-content">
         <div class="section__content section__content--p30">
             <div class="container-fluid">
+                @if(session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
                 @if ($errors->any())
+
                     <div class="alert alert-danger">
                         <ul>
                             @foreach ($errors->all() as $error)

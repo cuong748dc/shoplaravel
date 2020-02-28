@@ -11,6 +11,16 @@
                         {{ session()->get('success') }}
                     </div>
                 @endif
+                @if ($errors->any())
+
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                {{ $error }}<br>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="row">
                     <div class="col-md-12">
                         <h2 class="title-1">all user</h2>
@@ -48,7 +58,7 @@
                                                     <i class="zmdi zmdi-edit"></i>
                                                 </a>
                                                 <form action="{{route('users.destroy', $user->id)}}"
-                                                      method="post">
+                                                      onclick="return window.confirm('Are you sure?');" method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="item" data-placement="top"

@@ -2,7 +2,22 @@
 @section('content')
     <main class="mt-5 pt-4">
         <div class="container">
-            <!-- Heading -->
+            @if(session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session()->get('success') }}
+                </div>
+            @endif
+            @if ($errors->any())
+
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            {{ $error }}<br>
+                        @endforeach
+                    </ul>
+                </div>
+        @endif
+        <!-- Heading -->
             <h2 class="my-5 h2 text-center">Bill</h2>
             <!--Grid row-->
             <div class="row">
@@ -13,32 +28,38 @@
                     </h4>
                     <ul class="list-group mb-3 z-depth-1">
                         <li class="list-group-item d-flex justify-content-between lh-condensed">
-                            <div class="col-3">
+                            <div class="col-2">
                                 <h6 class="my-0">Date Order</h6>
                             </div>
-                            <div class="col-3">
+                            <div class="col-2">
                                 <h6 class="my-0">Total</h6>
                             </div>
-                            <div class="col-3">
+                            <div class="col-2">
                                 <h6 class="my-0">Address</h6>
                             </div>
-                            <div class="col-3">
+                            <div class="col-2">
+                                <h6 class="my-0">Phone</h6>
+                            </div>
+                            <div class="col-2">
                                 <h6 class="my-0">Detail</h6>
                             </div>
 
                         </li>
                         @foreach($bills as $bill)
                             <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                <div class="col-3">
+                                <div class="col-2">
                                     <h6 class="my-0">{{$bill->date_order}}</h6>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-2">
                                     <h6 class="my-0">{{$bill->total}}</h6>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-2">
                                     <h6 class="my-0">{{$bill->user_address}}</h6>
                                 </div>
-                                <a class="col-3" href="{{route('bills.show',$bill->id)}}">
+                                <div class="col-2">
+                                    <h6 class="my-0">{{$bill->user_phone}}</h6>
+                                </div>
+                                <a class="col-2" href="{{route('bills.show',$bill->id)}}">
                                     <i class="fas fa-search"></i>
                                 </a>
                             </li>

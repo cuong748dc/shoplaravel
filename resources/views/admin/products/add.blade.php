@@ -6,6 +6,11 @@
     <div class="main-content">
         <div class="section__content section__content--p30">
             <div class="container-fluid">
+                @if(session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
                 @if ($errors->any())
 
                     <div class="alert alert-danger">
@@ -30,7 +35,7 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <input type="text" name="name" placeholder="New Product Name"
-                                               class="form-control">
+                                               class="form-control" value="{{ old('name') }}">
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -53,7 +58,7 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <input id="price" type="text" class="form-control" name="price"
-                                               placeholder="Price">
+                                               placeholder="Price" value="{{ old('price') }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -63,7 +68,7 @@
                                     <div class="col-12 col-md-9">
                                         <input id="promotion_price" type="text" class="form-control"
                                                name="promotion_price"
-                                               placeholder="Promotion Price">
+                                               placeholder="Promotion Price" value="{{ old('promotion_price') }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -72,7 +77,7 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <input id="quantity" type="text" class="form-control" name="quantity"
-                                               placeholder="Quantity">
+                                               placeholder="Quantity" value="{{ old('quantity') }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -81,7 +86,7 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <input id="description" type="text" class="form-control" name="description"
-                                               placeholder="Description">
+                                               placeholder="Description" value="{{ old('description') }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">

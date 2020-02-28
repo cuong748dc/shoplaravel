@@ -22,7 +22,7 @@
                                     <th>Date Order</th>
                                     <th>Total</th>
                                     <th>User Address</th>
-                                    <th>Status</th>
+                                    <th>Phone</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -34,13 +34,7 @@
                                         <td class="desc">{{$bill->date_order}}</td>
                                         <td class="desc">${{number_format($bill->total)}}</td>
                                         <td class="desc">{{$bill->user_address}}</td>
-                                        <td class="desc">
-                                            @if($bill->status==0)
-                                                Unfinished
-                                            @else
-                                                Finished
-                                            @endif
-                                        </td>
+                                        <td class="desc">{{$bill->user_phone}}</td>
                                         <td>
                                             <a class="col-4" href="{{route('order.show',$bill->id)}}">
                                                 <i class="fas fa-search"></i>

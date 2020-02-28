@@ -2,19 +2,13 @@
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <div class="header-wrap">
-                <form class="form-header" action="" method="POST">
-                    <input class="au-input au-input--xl" type="text" name="search"
-                           placeholder="Search"/>
-                    <button class="au-btn--submit" type="submit">
-                        <i class="zmdi zmdi-search"></i>
-                    </button>
-                </form>
+                <form class="form-header"></form>
                 <div class="header-button">
                     <div class="account-wrap">
                         <div class="account-item clearfix js-item-menu">
                             <i class="zmdi zmdi-account-o" style=" font-size: 40px;color: #4272D7"></i>
                             <div class="account-dropdown js-dropdown">
-                                <div class="info clearfix">
+                                <div class="info clearfix" style="text-align: center;">
                                     <span class="name">{{ Auth::user()->name }}</span>
                                     <br>
                                     <span class="email">{{ Auth::user()->email }}</span>

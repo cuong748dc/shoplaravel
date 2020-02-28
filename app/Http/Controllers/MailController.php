@@ -21,7 +21,7 @@ class MailController extends Controller
         });
 
         Session::forget('cart');
-        return redirect()->route('bills.index');
+        return redirect()->route('bills.index')->with('success', 'Order products successfully, check your email.');;
     }
 
 
