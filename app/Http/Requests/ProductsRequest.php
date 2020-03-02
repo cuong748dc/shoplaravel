@@ -54,7 +54,7 @@ class ProductsRequest extends FormRequest
             'numeric' => ':attribute must be a number!',
             'image' => ':attribute must be a image!',
             'mimes' => ':attribute must be in jpeg,png,jpg,gif,svg format!',
-            'gt' => ':attribute must be greater than :gt',
+            'gt' => ':attribute must be greater than :value',
             'lte' => ':attribute must be less than :value',
         ];
     }
